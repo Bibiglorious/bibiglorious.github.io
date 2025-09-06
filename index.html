@@ -1,292 +1,395 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Ebere Onwuamaoke - Data Scientist Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<style>
-			/* Reset and Base Styles */
-			html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-				margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;
-			}
-			body { line-height: 1; }
-			ol, ul { list-style: none; }
-			
-			/* Main Styles */
-			html { box-sizing: border-box; }
-			*, *:before, *:after { box-sizing: inherit; }
-			body { background: #212931; }
-			body, input, select, textarea { color: #ffffff; font-family: "Merriweather", Georgia, serif; font-size: 17pt; font-weight: 300; line-height: 1.65; }
-			
-			a { transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out; border-bottom: dotted 1px rgba(255, 255, 255, 0.5); text-decoration: none; color: inherit; }
-			a:hover { border-bottom-color: transparent; color: #18bfef !important; }
-			
-			h1, h2, h3, h4, h5, h6 { color: #ffffff; font-weight: 800; line-height: 1.5; margin: 0 0 1rem 0; text-transform: uppercase; letter-spacing: 0.2rem; }
-			h1 { font-size: 4rem; line-height: 1.1; margin: 0 0 2rem 0; }
-			h2 { font-size: 1.75rem; line-height: 1.3; margin: 0 0 1.5rem 0; }
-			h3 { font-size: 1.35rem; line-height: 1.4; margin: 0 0 1.5rem 0; }
-			
-			p { margin: 0 0 2rem 0; }
-			
-			/* Layout */
-			#wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; position: relative; width: 100%; padding: 4rem 2rem; z-index: 3; }
-			#wrapper:before { content: ''; display: block; }
-			
-			#bg { transform: scale(1.0); -webkit-backface-visibility: hidden; -webkit-transform: translate3d(0, 0, 0); position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1; }
-			#bg:before, #bg:after { content: ''; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-			#bg:before { background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.25) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 100%); }
-			#bg:after { transform: scale(1.125); transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out; background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='m0 40l40-40v40z'/%3E%3Cpath d='m0 0h40v40z'/%3E%3C/g%3E%3C/svg%3E"); background-attachment: fixed, fixed; background-position: center center, center center; background-repeat: repeat, no-repeat; background-size: 128px 128px, cover; }
-			
-			#wrapper.fade-in #bg:after { transform: scale(1.0); }
-			
-			/* Intro */
-			#intro { display: flex; flex-direction: column; align-items: center; max-width: 48rem; text-align: center; }
-			#intro h1 { font-size: 5rem; }
-			#intro p { color: rgba(255, 255, 255, 0.75); font-size: 1.25rem; line-height: 1.5; margin: 0 0 2.5rem 0; }
-			
-			/* Header */
-			#header { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 65rem; }
-			#header .logo { border: 0; color: inherit; text-decoration: none; font-weight: 800; line-height: 1; margin: 0; text-transform: uppercase; letter-spacing: 0.2rem; }
-			
-			/* Nav */
-			#nav { display: flex; align-items: center; }
-			#nav .links { display: flex; list-style: none; margin: 0; padding: 0; }
-			#nav .links li { margin-left: 2rem; }
-			#nav .links li:first-child { margin-left: 0; }
-			#nav .links li a { border: 0; color: rgba(255, 255, 255, 0.5); display: block; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.2rem; line-height: 1.5; padding: 0.5rem 0; text-decoration: none; text-transform: uppercase; }
-			#nav .links li a:hover, #nav .links li a.active { color: #ffffff; }
-			
-			#nav .icons { display: flex; list-style: none; margin: 0; padding: 0; }
-			#nav .icons li { margin-left: 1rem; }
-			#nav .icons li:first-child { margin-left: 0; }
-			#nav .icons li a { border: 0; color: rgba(255, 255, 255, 0.5); display: block; font-size: 1.25rem; height: 2rem; line-height: 2rem; text-align: center; text-decoration: none; width: 2rem; }
-			#nav .icons li a:hover { color: #ffffff; }
-			
-			/* Main */
-			#main { border-top: solid 1px rgba(255, 255, 255, 0.15); width: 100%; max-width: 65rem; margin-top: 4rem; }
-			
-			/* Posts */
-			.posts { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); grid-gap: 2.5rem; margin: 3rem 0 0 0; }
-			
-			.posts article { display: flex; flex-direction: column; border: solid 1px rgba(255, 255, 255, 0.15); }
-			.posts article .image { display: block; width: 100%; }
-			.posts article .image img { display: block; width: 100%; height: 15rem; object-fit: cover; }
-			.posts article header { flex-grow: 1; padding: 2rem; }
-			.posts article header .date { color: rgba(255, 255, 255, 0.5); display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2rem; line-height: 2; text-transform: uppercase; }
-			.posts article header h2 { font-size: 1.25rem; line-height: 1.5; }
-			.posts article header h2 a { color: inherit; text-decoration: none; border: 0; }
-			.posts article header p { color: rgba(255, 255, 255, 0.75); }
-			
-			.posts article .actions { display: flex; align-items: center; padding: 0 2rem 2rem 2rem; }
-			
-			/* Featured Post */
-			.post.featured { display: flex; flex-direction: column; align-items: center; margin: 4rem 0; text-align: center; }
-			.post.featured header { width: 100%; margin: 0 0 2rem 0; }
-			.post.featured header .date { color: rgba(255, 255, 255, 0.5); display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2rem; line-height: 2; margin: 0 0 1rem 0; text-transform: uppercase; }
-			.post.featured header h2 { font-size: 2rem; line-height: 1.5; margin: 0 0 2rem 0; }
-			.post.featured header h2 a { color: inherit; text-decoration: none; border: 0; }
-			.post.featured header p { color: rgba(255, 255, 255, 0.75); font-size: 1.25rem; line-height: 1.5; }
-			.post.featured .image.main { margin: 0 0 3rem 0; }
-			.post.featured .image.main img { width: 100%; height: 20rem; object-fit: cover; }
-			
-			/* Actions/Buttons */
-			.actions { display: flex; list-style: none; margin: 0; padding: 0; }
-			.actions li { margin-left: 1rem; padding: 0; }
-			.actions li:first-child { margin-left: 0; }
-			
-			.button { appearance: none; transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; background-color: transparent; border-radius: 0; border: solid 1px #ffffff; color: #ffffff !important; cursor: pointer; display: inline-block; font-size: 0.8rem; font-weight: 800; height: 3.5rem; letter-spacing: 0.2rem; line-height: 3.5rem; padding: 0 2.25rem; text-align: center; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
-			.button:hover { background-color: rgba(255, 255, 255, 0.075); }
-			.button.large { font-size: 0.8rem; height: 3.75rem; line-height: 3.75rem; padding: 0 3rem; }
-			
-			/* Footer */
-			#footer { margin-top: 6rem; }
-			#footer .split.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); margin: 0 0 3rem 0; }
-			#footer .split.contact > * { border-top: solid 1px rgba(255, 255, 255, 0.15); padding-top: 2rem; margin-top: 2rem; }
-			#footer .split.contact > *:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
-			
-			/* Icons */
-			.icons { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
-			.icons li { margin: 0 1rem 0 0; padding: 0; }
-			.icons li:last-child { margin-right: 0; }
-			.icons li a { border: 0; color: rgba(255, 255, 255, 0.5); display: block; font-size: 1.25rem; height: 2rem; line-height: 2rem; text-align: center; text-decoration: none; width: 2rem; }
-			.icons li a:hover { color: #ffffff; }
-			
-			/* Copyright */
-			#copyright { color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; list-style: none; margin: 2rem 0 0 0; padding: 0; text-align: center; }
-			#copyright li { border-left: solid 1px rgba(255, 255, 255, 0.15); display: inline-block; line-height: 1; margin-left: 1rem; padding-left: 1rem; }
-			#copyright li:first-child { border-left: 0; margin-left: 0; padding-left: 0; }
-			#copyright li a { color: inherit; }
-			
-			/* Responsive */
-			@media screen and (max-width: 1680px) {
-				body, input, select, textarea { font-size: 14pt; }
-				#intro h1 { font-size: 4rem; }
-			}
-			@media screen and (max-width: 736px) {
-				body, input, select, textarea { font-size: 12pt; }
-				h1 { font-size: 3rem; }
-				#intro h1 { font-size: 3rem; }
-				#header { flex-direction: column; text-align: center; }
-				#nav { margin-top: 1rem; }
-				#nav .links { justify-content: center; }
-				#nav .links li { margin: 0 1rem; }
-				.posts { grid-template-columns: 1fr; }
-				#footer .split.contact { grid-template-columns: 1fr; }
-			}
-		</style>
-	</head>
-	<body class="is-preload">
+<head>
+    <title>Ebere Onwuamaoke - Data Scientist Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <style>
+        /* Reset and Base Styles */
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+            margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;
+        }
+        body { line-height: 1; }
+        ol, ul { list-style: none; }
+        
+        /* Main Styles */
+        html { box-sizing: border-box; scroll-behavior: smooth; }
+        *, *:before, *:after { box-sizing: inherit; }
+        body { background: #212931; overflow-x: hidden; }
+        body, input, select, textarea { color: #ffffff; font-family: "Merriweather", Georgia, serif; font-size: 17pt; font-weight: 300; line-height: 1.65; }
+        
+        a { transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out; border-bottom: dotted 1px rgba(255, 255, 255, 0.5); text-decoration: none; color: inherit; }
+        a:hover { border-bottom-color: transparent; color: #18bfef !important; }
+        
+        h1, h2, h3, h4, h5, h6 { color: #ffffff; font-weight: 800; line-height: 1.5; margin: 0 0 1rem 0; text-transform: uppercase; letter-spacing: 0.2rem; }
+        h1 { font-size: 4rem; line-height: 1.1; margin: 0 0 2rem 0; }
+        h2 { font-size: 1.75rem; line-height: 1.3; margin: 0 0 1.5rem 0; }
+        h3 { font-size: 1.35rem; line-height: 1.4; margin: 0 0 1.5rem 0; }
+        
+        p { margin: 0 0 2rem 0; }
+        
+        /* Parallax Background */
+        #bg { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100vh; 
+            z-index: 1;
+            background: linear-gradient(45deg, #212931, #1a2026);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        #bg:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Layout */
+        #wrapper { 
+            position: relative; 
+            z-index: 3; 
+            min-height: 100vh;
+            background: rgba(33, 41, 49, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Intro */
+        #intro { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            min-height: 100vh;
+            max-width: 48rem; 
+            margin: 0 auto;
+            text-align: center; 
+            padding: 4rem 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        #intro h1 { 
+            font-size: 5rem; 
+            background: linear-gradient(45deg, #18bfef, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        #intro p { color: rgba(255, 255, 255, 0.75); font-size: 1.25rem; line-height: 1.5; margin: 0 0 2.5rem 0; }
+        
+        /* Header */
+        #header { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            width: 100%; 
+            max-width: 65rem; 
+            margin: 0 auto;
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            background: rgba(33, 41, 49, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: solid 1px rgba(255, 255, 255, 0.15);
+            z-index: 100;
+        }
+        #header .logo { border: 0; color: inherit; text-decoration: none; font-weight: 800; line-height: 1; margin: 0; text-transform: uppercase; letter-spacing: 0.2rem; }
+        
+        /* Nav */
+        #nav { display: flex; align-items: center; }
+        #nav .links { display: flex; list-style: none; margin: 0; padding: 0; }
+        #nav .links li { margin-left: 2rem; }
+        #nav .links li:first-child { margin-left: 0; }
+        #nav .links li a { border: 0; color: rgba(255, 255, 255, 0.5); display: block; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.2rem; line-height: 1.5; padding: 0.5rem 0; text-decoration: none; text-transform: uppercase; transition: all 0.3s ease; }
+        #nav .links li a:hover, #nav .links li a.active { color: #18bfef; }
+        
+        #nav .icons { display: flex; list-style: none; margin: 0; padding: 0; }
+        #nav .icons li { margin-left: 1rem; }
+        #nav .icons li:first-child { margin-left: 0; }
+        #nav .icons li a { border: 0; color: rgba(255, 255, 255, 0.5); display: block; font-size: 1.25rem; height: 2rem; line-height: 2rem; text-align: center; text-decoration: none; width: 2rem; transition: all 0.3s ease; }
+        #nav .icons li a:hover { color: #18bfef; transform: scale(1.1); }
+        
+        /* Main */
+        #main { 
+            width: 100%; 
+            max-width: 65rem; 
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        /* Posts */
+        .posts { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); 
+            grid-gap: 2.5rem; 
+            margin: 3rem 0 0 0; 
+        }
+        
+        .posts article { 
+            display: flex; 
+            flex-direction: column; 
+            border: solid 1px rgba(255, 255, 255, 0.15); 
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            overflow: hidden;
+        }
+        
+        .posts article:nth-child(1) { animation-delay: 0.1s; }
+        .posts article:nth-child(2) { animation-delay: 0.2s; }
+        .posts article:nth-child(3) { animation-delay: 0.3s; }
+        .posts article:nth-child(4) { animation-delay: 0.4s; }
+        .posts article:nth-child(5) { animation-delay: 0.5s; }
+        .posts article:nth-child(6) { animation-delay: 0.6s; }
+        
+        .posts article:hover { 
+            transform: translateY(-10px); 
+            border-color: rgba(24, 191, 239, 0.5);
+            box-shadow: 0 10px 30px rgba(24, 191, 239, 0.2);
+        }
+        
+        .posts article .image { display: block; width: 100%; overflow: hidden; }
+        .posts article .image img { display: block; width: 100%; height: 15rem; object-fit: cover; transition: all 0.3s ease; }
+        .posts article:hover .image img { transform: scale(1.05); }
+        .posts article header { flex-grow: 1; padding: 2rem; }
+        .posts article header .date { color: rgba(255, 255, 255, 0.5); display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2rem; line-height: 2; text-transform: uppercase; }
+        .posts article header h2 { font-size: 1.25rem; line-height: 1.5; }
+        .posts article header h2 a { color: inherit; text-decoration: none; border: 0; }
+        .posts article header p { color: rgba(255, 255, 255, 0.75); }
+        
+        .posts article .actions { display: flex; align-items: center; padding: 0 2rem 2rem 2rem; }
+        
+        /* Featured Post */
+        .post.featured { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            margin: 4rem 0; 
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+        }
+        .post.featured header { width: 100%; margin: 0 0 2rem 0; }
+        .post.featured header .date { color: rgba(255, 255, 255, 0.5); display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2rem; line-height: 2; margin: 0 0 1rem 0; text-transform: uppercase; }
+        .post.featured header h2 { font-size: 2rem; line-height: 1.5; margin: 0 0 2rem 0; }
+        .post.featured header h2 a { color: inherit; text-decoration: none; border: 0; }
+        .post.featured header p { color: rgba(255, 255, 255, 0.75); font-size: 1.25rem; line-height: 1.5; }
+        .post.featured .image.main { margin: 0 0 3rem 0; overflow: hidden; border-radius: 10px; }
+        .post.featured .image.main img { width: 100%; height: 20rem; object-fit: cover; transition: all 0.3s ease; }
+        .post.featured:hover .image.main img { transform: scale(1.05); }
+        
+        /* Pagination */
+        .pagination { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 4rem 0; 
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+        }
+        .pagination .page, .pagination .next, .pagination .previous { 
+            display: inline-block; 
+            margin: 0 0.5rem; 
+            padding: 0.75rem 1rem; 
+            border: solid 1px rgba(255, 255, 255, 0.15); 
+            background: transparent;
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none; 
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+        .pagination .page:hover, .pagination .next:hover, .pagination .previous:hover { 
+            background: rgba(24, 191, 239, 0.2); 
+            border-color: #18bfef;
+            color: #18bfef;
+            transform: translateY(-2px);
+        }
+        .pagination .page.active { 
+            background: #18bfef; 
+            border-color: #18bfef;
+            color: #ffffff;
+        }
+        .pagination .extra { 
+            color: rgba(255, 255, 255, 0.5); 
+            margin: 0 0.5rem; 
+        }
+        
+        /* Actions/Buttons */
+        .actions { display: flex; list-style: none; margin: 0; padding: 0; }
+        .actions li { margin-left: 1rem; padding: 0; }
+        .actions li:first-child { margin-left: 0; }
+        
+        .button { 
+            appearance: none; 
+            transition: all 0.3s ease; 
+            background: linear-gradient(45deg, #18bfef, #1a9bc7);
+            border-radius: 5px; 
+            border: none;
+            color: #ffffff !important; 
+            cursor: pointer; 
+            display: inline-block; 
+            font-size: 0.8rem; 
+            font-weight: 800; 
+            height: 3.5rem; 
+            letter-spacing: 0.2rem; 
+            line-height: 3.5rem; 
+            padding: 0 2.25rem; 
+            text-align: center; 
+            text-decoration: none; 
+            text-transform: uppercase; 
+            white-space: nowrap; 
+        }
+        .button:hover { 
+            background: linear-gradient(45deg, #1a9bc7, #18bfef);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(24, 191, 239, 0.4);
+        }
+        .button.large { font-size: 0.8rem; height: 3.75rem; line-height: 3.75rem; padding: 0 3rem; }
+        
+        /* Footer */
+        #footer { 
+            margin-top: 6rem; 
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+        }
+        #footer .split.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); margin: 0 0 3rem 0; }
+        #footer .split.contact > * { border-top: solid 1px rgba(255, 255, 255, 0.15); padding-top: 2rem; margin-top: 2rem; }
+        #footer .split.contact > *:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+        
+        /* Icons */
+        .icons { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+        .icons li { margin: 0 1rem 0 0; padding: 0; }
+        .icons li:last-child { margin-right: 0; }
+        .icons li a { border: 0; color: rgba(255, 255, 255, 0.5); display: block; font-size: 1.25rem; height: 2rem; line-height: 2rem; text-align: center; text-decoration: none; width: 2rem; transition: all 0.3s ease; }
+        .icons li a:hover { color: #18bfef; transform: scale(1.1); }
+        
+        /* Copyright */
+        #copyright { color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; list-style: none; margin: 2rem 0 0 0; padding: 0; text-align: center; }
+        #copyright li { border-left: solid 1px rgba(255, 255, 255, 0.15); display: inline-block; line-height: 1; margin-left: 1rem; padding-left: 1rem; }
+        #copyright li:first-child { border-left: 0; margin-left: 0; padding-left: 0; }
+        #copyright li a { color: inherit; }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #18bfef, #1a9bc7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 1.2rem;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+        }
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(24, 191, 239, 0.4);
+        }
+        
+        /* Responsive */
+        @media screen and (max-width: 1680px) {
+            body, input, select, textarea { font-size: 14pt; }
+            #intro h1 { font-size: 4rem; }
+        }
+        @media screen and (max-width: 736px) {
+            body, input, select, textarea { font-size: 12pt; }
+            h1 { font-size: 3rem; }
+            #intro h1 { font-size: 3rem; }
+            #header { flex-direction: column; text-align: center; position: relative; }
+            #nav { margin-top: 1rem; }
+            #nav .links { justify-content: center; }
+            #nav .links li { margin: 0 1rem; }
+            .posts { grid-template-columns: 1fr; }
+            #footer .split.contact { grid-template-columns: 1fr; }
+            .pagination { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body class="is-preload">
 
-		<!-- Wrapper -->
-		<div id="wrapper" class="fade-in">
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-			<!-- Intro -->
-			<div id="intro">
-				<h1>Ebere's Portfolio</h1>
-				<p>Data Scientist | Data Engineer skilled in Python | Predictive Modelling | SQL | Power BI | ETL | Cloud(Azure/GCP)<br />
-				Building Data Infrastructure and ML Solutions to Drive Results<br />
-				Connect with me: <a href="https://github.com/Bibiglorious">@Bibiglorious</a></p>
-				<ul class="actions">
-					<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-				</ul>
-			</div>
+        <!-- Intro -->
+        <div id="intro">
+            <h1>Ebere's Portfolio</h1>
+            <p>Data Scientist | Data Engineer skilled in Python | Predictive Modelling | SQL | Power BI | ETL | Cloud(Azure/GCP)<br />
+            Building Data Infrastructure and ML Solutions to Drive Results<br />
+            Connect with me: <a href="https://github.com/Bibiglorious">@Bibiglorious</a></p>
+            <ul class="actions">
+                <li><a href="#header" class="button">Continue</a></li>
+            </ul>
+        </div>
 
-			<!-- Header -->
-			<header id="header">
-				<a href="index.html" class="logo">Ebere The Data Scientist</a>
-			</header>
+        <!-- Header -->
+        <header id="header">
+            <a href="index.html" class="logo">Ebere The Data Scientist</a>
+        </header>
 
-			<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-					<li class="active"><a href="index.html">Projects</a></li>
-				</ul>
-				<ul class="icons">
-					<li><a href="https://www.linkedin.com/in/ebere-onwuamaoke/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-					<li><a href="https://github.com/Bibiglorious" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-				</ul>
-			</nav>
+        <!-- Nav -->
+        <nav id="nav">
+            <ul class="links">
+                <li class="active"><a href="index.html">Page 1</a></li>
+                <li><a href="page2.html">Page 2</a></li>
+                <li><a href="page3.html">Page 3</a></li>
+                <li><a href="page4.html">Page 4</a></li>
+                <li><a href="page5.html">Page 5</a></li>
+            </ul>
+            <ul class="icons">
+                <li><a href="https://www.linkedin.com/in/ebere-onwuamaoke/">LinkedIn</a></li>
+                <li><a href="https://github.com/Bibiglorious">GitHub</a></li>
+            </ul>
+        </nav>
 
-			<!-- Main -->
-			<div id="main">
+        <!-- Main -->
+        <div id="main">
 
-				<!-- Featured Post -->
-				<article class="post featured">
-					<header class="major">
-						<h2><a href="#">Sentiment Analysis of Amazon Video Game Reviews</a></h2>
-						<p>Applied Natural Language Processing techniques to perform sentiment analysis on customer reviews. The text data underwent preprocessing steps such as tokenization, lemmatization, stopword removal, and special character filtering. Transformed processed text into numerical representations using TF-IDF and employed machine learning models (kNN and SVM) to classify sentiment into negative, neutral, and positive categories.</p>
-					</header>
-					<a href="#" class="image main"><img src="data:image/svg+xml,%3Csvg width='600' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='24' dy='.3em'%3EVideo Game Analytics%3C/text%3E%3C/svg%3E" alt="Video Game Sentiment Analysis" /></a>
-					<ul class="actions special">
-						<li><a href="#" class="button large">View Project</a></li>
-					</ul>
-				</article>
-
-				<!-- Posts -->
-				<section class="posts">
-					<article>
-						<header>
-							<h2><a href="https://github.com/Bibiglorious/sentiment-analysis">Aspect Based Sentiment Analysis for Restaurant Review</a></h2>
-						</header>
-						<a href="https://github.com/Bibiglorious/sentiment-analysis" class="image fit"><img src="data:image/svg+xml,%3Csvg width='400' height='240' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23764ba2'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='18' dy='.3em'%3ERestaurant Analytics%3C/text%3E%3C/svg%3E" alt="Restaurant Review Analysis" /></a>
-						<p>An intelligent system that automatically analyzes restaurant reviews using machine learning to provide real-time sentiment insights, helping restaurant owners make data-driven decisions.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/Bibiglorious/sentiment-analysis" class="button">View Project</a></li>
-						</ul>
-					</article>
-					
-					<article>
-						<header>
-							<h2><a href="https://github.com/Bibiglorious/dementia_prediction">Ensemble Machine Learning for Dementia Prediction</a></h2>
-						</header>
-						<a href="https://github.com/Bibiglorious/dementia_prediction" class="image fit"><img src="data:image/svg+xml,%3Csvg width='400' height='240' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='18' dy='.3em'%3EHealthcare ML%3C/text%3E%3C/svg%3E" alt="Dementia Prediction" /></a>
-						<p>Implemented a machine learning solution for early dementia detection by analyzing patient medical data. The project combines different prediction algorithms to provide insights that can help healthcare providers make better informed decisions about patient care.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/Bibiglorious/dementia_prediction" class="button">View Project</a></li>
-						</ul>
-					</article>
-					
-					<article>
-						<header>
-							<h2><a href="#">Credit Card Fraud Detection using Machine Learning</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="data:image/svg+xml,%3Csvg width='400' height='240' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23764ba2'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='18' dy='.3em'%3EFraud Detection%3C/text%3E%3C/svg%3E" alt="Credit Card Fraud Detection" /></a>
-						<p>Developed a credit card fraud detection system using machine learning algorithms to identify suspicious transactions in a German credit card dataset. This project aimed to improve financial security by comparing the effectiveness of both models in detecting fraudulent activity.</p>
-						<ul class="actions special">
-							<li><a href="#" class="button">View Project</a></li>
-						</ul>
-					</article>
-					
-					<article>
-						<header>
-							<h2><a href="#">Human Activity Recognition Using Sensor Data Analysis</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="data:image/svg+xml,%3Csvg width='400' height='240' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='18' dy='.3em'%3EActivity Recognition%3C/text%3E%3C/svg%3E" alt="Human Activity Recognition" /></a>
-						<p>A machine learning project focusing on recognizing human activities through smartphone and smartwatch sensor data. The project combined data visualization techniques with machine learning to accurately classify various physical activities such as walking, jogging, and eating.</p>
-						<ul class="actions special">
-							<li><a href="#" class="button">View Project</a></li>
-						</ul>
-					</article>
-					
-					<article>
-						<header>
-							<h2><a href="#">Data Mining and Visualization: Exploring Patterns & Trends</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="data:image/svg+xml,%3Csvg width='400' height='240' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23764ba2'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='18' dy='.3em'%3EData Visualization%3C/text%3E%3C/svg%3E" alt="Data Visualization" /></a>
-						<p>This project explores various aspects of data analysis, visualization, and machine learning using real-world datasets. It incorporates multiple techniques and methodologies such as stock market trend analysis, geospatial data visualization, interactive data exploration, data preprocessing, and predictive modeling.</p>
-						<ul class="actions special">
-							<li><a href="#" class="button">View Project</a></li>
-						</ul>
-					</article>
-					
-					<article>
-						<header>
-							<h2><a href="#">Decision Tree Classification with ID3: Predicting Activities Using Supervised Learning</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="data:image/svg+xml,%3Csvg width='400' height='240' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' fill='white' font-size='18' dy='.3em'%3EID3 Algorithm%3C/text%3E%3C/svg%3E" alt="ID3 Algorithm" /></a>
-						<p>This project implements the ID3 decision tree algorithm to predict Sunday activities using factors like weather, financial status, and parental visits. Using entropy and information gain, the model predicts whether an individual will go to the cinema or stay in.</p>
-						<ul class="actions special">
-							<li><a href="#" class="button">View Project</a></li>
-						</ul>
-					</article>
-				</section>
-
-			</div>
-
-			<!-- Footer -->
-			<footer id="footer">
-				<section class="split contact">
-					<section class="alt">
-						<h3>Location</h3>
-						<p>Leeds, United Kingdom</p>
-					</section>
-					<section>
-						<h3>Phone</h3>
-						<p><a href="tel:+447587972186">(+44) 075-8797-2186</a></p>
-					</section>
-					<section>
-						<h3>Email</h3>
-						<p><a href="mailto:bibiglorious34@gmail.com">bibiglorious34@gmail.com</a></p>
-					</section>
-					<section>
-						<h3>Social</h3>
-						<ul class="icons alt">
-							<li><a href="https://www.linkedin.com/in/ebere-onwuamaoke/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://github.com/Bibiglorious" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</section>
-				</section>
-			</footer>
-
-			<!-- Copyright -->
-			<div id="copyright">
-				<ul><li>&copy; Ebere's Portfolio</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-			</div>
-
-		</div>
-
-		<!-- BG -->
-		<div id="bg"></div>
-
-	</body>
-</html>
+            <!-- Featured Post -->
+            <article class="post featured">
+                <header class="major">
+                    <h2><a href="#">Sentiment Analysis of Amazon Video Game Reviews</a></h2>
+                    <p>Applied Natural Language Processing techniques to perform sentiment analysis on customer reviews. The text data underwent preprocessing steps such as tokenization, lemmatization, stopword removal, and special character filtering. Transformed processed text into numerical representations using TF-IDF and employed machine learning models (kNN and SVM) to classify sentiment into negative, neutral, and positive categories.</p>
+                </header>
+                <a href="#" class="image main"><img src="images/videogame.jpg" alt=
