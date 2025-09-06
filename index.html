@@ -4,6 +4,7 @@
     <title>Ebere Onwuamaoke - Data Scientist Portfolio</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Reset and Base Styles */
         html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -28,7 +29,7 @@
         
         p { margin: 0 0 2rem 0; }
         
-        /* Parallax Background */
+        /* Crystal Background */
         #bg { 
             position: fixed; 
             top: 0; 
@@ -36,15 +37,7 @@
             width: 100%; 
             height: 100vh; 
             z-index: 1;
-            background: linear-gradient(45deg, #212931, #1a2026);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background: radial-gradient(ellipse at center, rgba(24, 191, 239, 0.1) 0%, rgba(33, 41, 49, 0.9) 50%, rgba(0, 0, 0, 1) 100%);
         }
         
         #bg:before {
@@ -54,13 +47,28 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            animation: float 20s ease-in-out infinite;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpolygon points='50,0 60,35 100,35 70,57 80,91 50,70 20,91 30,57 0,35 40,35'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 200px 200px;
+            animation: crystalFloat 30s ease-in-out infinite;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        #bg:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2318bfef' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 120px 120px;
+            animation: crystalFloat 25s ease-in-out infinite reverse;
+        }
+        
+        @keyframes crystalFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.02; }
+            25% { transform: translateY(-10px) rotate(90deg); opacity: 0.05; }
+            50% { transform: translateY(-5px) rotate(180deg); opacity: 0.03; }
+            75% { transform: translateY(-15px) rotate(270deg); opacity: 0.04; }
         }
         
         /* Layout */
@@ -68,7 +76,7 @@
             position: relative; 
             z-index: 3; 
             min-height: 100vh;
-            background: rgba(33, 41, 49, 0.9);
+            background: rgba(33, 41, 49, 0.8);
             backdrop-filter: blur(10px);
         }
         
@@ -97,12 +105,20 @@
         
         #intro h1 { 
             font-size: 5rem; 
-            background: linear-gradient(45deg, #18bfef, #ffffff);
+            background: linear-gradient(45deg, #18bfef, #ffffff, #18bfef);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: gradientText 3s ease-in-out infinite;
         }
-        #intro p { color: rgba(255, 255, 255, 0.75); font-size: 1.25rem; line-height: 1.5; margin: 0 0 2.5rem 0; }
+        
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        #intro p { color: rgba(255, 255, 255, 0.85); font-size: 1.25rem; line-height: 1.5; margin: 0 0 2.5rem 0; }
         
         /* Header */
         #header { 
@@ -123,18 +139,31 @@
         #header .logo { border: 0; color: inherit; text-decoration: none; font-weight: 800; line-height: 1; margin: 0; text-transform: uppercase; letter-spacing: 0.2rem; }
         
         /* Nav */
-        #nav { display: flex; align-items: center; }
-        #nav .links { display: flex; list-style: none; margin: 0; padding: 0; }
-        #nav .links li { margin-left: 2rem; }
-        #nav .links li:first-child { margin-left: 0; }
-        #nav .links li a { border: 0; color: rgba(255, 255, 255, 0.5); display: block; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.2rem; line-height: 1.5; padding: 0.5rem 0; text-decoration: none; text-transform: uppercase; transition: all 0.3s ease; }
+        #nav { display: flex; align-items: center; gap: 2rem; }
+        #nav .links { display: flex; list-style: none; margin: 0; padding: 0; gap: 2rem; }
+        #nav .links li a { border: 0; color: rgba(255, 255, 255, 0.7); display: block; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.2rem; line-height: 1.5; padding: 0.5rem 0; text-decoration: none; text-transform: uppercase; transition: all 0.3s ease; }
         #nav .links li a:hover, #nav .links li a.active { color: #18bfef; }
         
-        #nav .icons { display: flex; list-style: none; margin: 0; padding: 0; }
-        #nav .icons li { margin-left: 1rem; }
-        #nav .icons li:first-child { margin-left: 0; }
-        #nav .icons li a { border: 0; color: rgba(255, 255, 255, 0.5); display: block; font-size: 1.25rem; height: 2rem; line-height: 2rem; text-align: center; text-decoration: none; width: 2rem; transition: all 0.3s ease; }
-        #nav .icons li a:hover { color: #18bfef; transform: scale(1.1); }
+        #nav .icons { display: flex; list-style: none; margin: 0; padding: 0; gap: 1rem; }
+        #nav .icons li a { 
+            border: 0; 
+            color: rgba(255, 255, 255, 0.7); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem; 
+            height: 2.5rem; 
+            width: 2.5rem; 
+            text-decoration: none; 
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        #nav .icons li a:hover { 
+            color: #18bfef; 
+            background: rgba(24, 191, 239, 0.2);
+            transform: translateY(-2px);
+        }
         
         /* Main */
         #main { 
@@ -163,6 +192,7 @@
             transform: translateY(30px);
             animation: fadeInUp 0.6s ease-out forwards;
             overflow: hidden;
+            border-radius: 10px;
         }
         
         .posts article:nth-child(1) { animation-delay: 0.1s; }
@@ -175,14 +205,13 @@
         .posts article:hover { 
             transform: translateY(-10px); 
             border-color: rgba(24, 191, 239, 0.5);
-            box-shadow: 0 10px 30px rgba(24, 191, 239, 0.2);
+            box-shadow: 0 15px 40px rgba(24, 191, 239, 0.3);
         }
         
         .posts article .image { display: block; width: 100%; overflow: hidden; }
         .posts article .image img { display: block; width: 100%; height: 15rem; object-fit: cover; transition: all 0.3s ease; }
         .posts article:hover .image img { transform: scale(1.05); }
         .posts article header { flex-grow: 1; padding: 2rem; }
-        .posts article header .date { color: rgba(255, 255, 255, 0.5); display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2rem; line-height: 2; text-transform: uppercase; }
         .posts article header h2 { font-size: 1.25rem; line-height: 1.5; }
         .posts article header h2 a { color: inherit; text-decoration: none; border: 0; }
         .posts article header p { color: rgba(255, 255, 255, 0.75); }
@@ -201,7 +230,6 @@
             animation: fadeInUp 0.8s ease-out 0.3s forwards;
         }
         .post.featured header { width: 100%; margin: 0 0 2rem 0; }
-        .post.featured header .date { color: rgba(255, 255, 255, 0.5); display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2rem; line-height: 2; margin: 0 0 1rem 0; text-transform: uppercase; }
         .post.featured header h2 { font-size: 2rem; line-height: 1.5; margin: 0 0 2rem 0; }
         .post.featured header h2 a { color: inherit; text-decoration: none; border: 0; }
         .post.featured header p { color: rgba(255, 255, 255, 0.75); font-size: 1.25rem; line-height: 1.5; }
@@ -219,10 +247,12 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border-radius: 10px;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
         .pagination .page, .pagination .next, .pagination .previous { 
             display: inline-block; 
-            margin: 0 0.5rem; 
+            margin: 0 0.25rem; 
             padding: 0.75rem 1rem; 
             border: solid 1px rgba(255, 255, 255, 0.15); 
             background: transparent;
@@ -230,6 +260,8 @@
             text-decoration: none; 
             transition: all 0.3s ease;
             border-radius: 5px;
+            min-width: 2.5rem;
+            text-align: center;
         }
         .pagination .page:hover, .pagination .next:hover, .pagination .previous:hover { 
             background: rgba(24, 191, 239, 0.2); 
@@ -286,16 +318,31 @@
             backdrop-filter: blur(10px);
             padding: 3rem;
         }
-        #footer .split.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); margin: 0 0 3rem 0; }
-        #footer .split.contact > * { border-top: solid 1px rgba(255, 255, 255, 0.15); padding-top: 2rem; margin-top: 2rem; }
-        #footer .split.contact > *:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+        #footer .split.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); margin: 0 0 3rem 0; gap: 2rem; }
+        #footer .split.contact > * { border-top: solid 1px rgba(255, 255, 255, 0.15); padding-top: 2rem; }
+        #footer .split.contact > *:first-child { border-top: 0; padding-top: 0; }
         
         /* Icons */
-        .icons { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
-        .icons li { margin: 0 1rem 0 0; padding: 0; }
-        .icons li:last-child { margin-right: 0; }
-        .icons li a { border: 0; color: rgba(255, 255, 255, 0.5); display: block; font-size: 1.25rem; height: 2rem; line-height: 2rem; text-align: center; text-decoration: none; width: 2rem; transition: all 0.3s ease; }
-        .icons li a:hover { color: #18bfef; transform: scale(1.1); }
+        .icons { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; gap: 1rem; }
+        .icons li a { 
+            border: 0; 
+            color: rgba(255, 255, 255, 0.7); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem; 
+            height: 2.5rem; 
+            width: 2.5rem; 
+            text-decoration: none; 
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .icons li a:hover { 
+            color: #18bfef; 
+            background: rgba(24, 191, 239, 0.2);
+            transform: translateY(-2px);
+        }
         
         /* Copyright */
         #copyright { color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; list-style: none; margin: 2rem 0 0 0; padding: 0; text-align: center; }
@@ -319,6 +366,9 @@
             transition: all 0.3s ease;
             z-index: 1000;
             font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .scroll-top.visible {
             opacity: 1;
@@ -337,10 +387,9 @@
             body, input, select, textarea { font-size: 12pt; }
             h1 { font-size: 3rem; }
             #intro h1 { font-size: 3rem; }
-            #header { flex-direction: column; text-align: center; position: relative; }
-            #nav { margin-top: 1rem; }
-            #nav .links { justify-content: center; }
-            #nav .links li { margin: 0 1rem; }
+            #header { flex-direction: column; text-align: center; position: relative; gap: 1rem; }
+            #nav { flex-direction: column; gap: 1rem; }
+            #nav .links { justify-content: center; flex-wrap: wrap; }
             .posts { grid-template-columns: 1fr; }
             #footer .split.contact { grid-template-columns: 1fr; }
             .pagination { flex-wrap: wrap; }
@@ -378,8 +427,8 @@
                 <li><a href="page5.html">Page 5</a></li>
             </ul>
             <ul class="icons">
-                <li><a href="https://www.linkedin.com/in/ebere-onwuamaoke/">LinkedIn</a></li>
-                <li><a href="https://github.com/Bibiglorious">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/ebere-onwuamaoke/"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/Bibiglorious"><i class="fab fa-github"></i></a></li>
             </ul>
         </nav>
 
@@ -392,4 +441,190 @@
                     <h2><a href="#">Sentiment Analysis of Amazon Video Game Reviews</a></h2>
                     <p>Applied Natural Language Processing techniques to perform sentiment analysis on customer reviews. The text data underwent preprocessing steps such as tokenization, lemmatization, stopword removal, and special character filtering. Transformed processed text into numerical representations using TF-IDF and employed machine learning models (kNN and SVM) to classify sentiment into negative, neutral, and positive categories.</p>
                 </header>
-                <a href="#" class="image main"><img src="images/videogame.jpg" alt=
+                <a href="#" class="image main"><img src="images/videogame.jpg" alt="Video Game Sentiment Analysis" /></a>
+                <ul class="actions special">
+                    <li><a href="#" class="button large">View Project</a></li>
+                </ul>
+            </article>
+
+            <!-- Posts -->
+            <section class="posts">
+                <article>
+                    <header>
+                        <h2><a href="https://github.com/Bibiglorious/sentiment-analysis">Restaurant Review Sentiment Analysis</a></h2>
+                    </header>
+                    <a href="https://github.com/Bibiglorious/sentiment-analysis" class="image fit"><img src="images/restaurant.jpeg" alt="Restaurant Review Analysis" /></a>
+                    <p>An intelligent system that automatically analyzes restaurant reviews using machine learning to provide real-time sentiment insights, helping restaurant owners make data-driven decisions.</p>
+                    <ul class="actions special">
+                        <li><a href="https://github.com/Bibiglorious/sentiment-analysis" class="button">View Project</a></li>
+                    </ul>
+                </article>
+                
+                <article>
+                    <header>
+                        <h2><a href="https://github.com/Bibiglorious/dementia_prediction">Dementia Prediction Model</a></h2>
+                    </header>
+                    <a href="https://github.com/Bibiglorious/dementia_prediction" class="image fit"><img src="images/dementia.png" alt="Dementia Prediction" /></a>
+                    <p>Machine learning solution for early dementia detection by analyzing patient medical data. The project combines different prediction algorithms to provide insights for healthcare providers.</p>
+                    <ul class="actions special">
+                        <li><a href="https://github.com/Bibiglorious/dementia_prediction" class="button">View Project</a></li>
+                    </ul>
+                </article>
+                
+                <article>
+                    <header>
+                        <h2><a href="#">Credit Card Fraud Detection</a></h2>
+                    </header>
+                    <a href="#" class="image fit"><img src="images/creditcard.jpg" alt="Credit Card Fraud Detection" /></a>
+                    <p>Developed a machine learning system using advanced algorithms to identify suspicious transactions in real-time, improving financial security through pattern recognition.</p>
+                    <ul class="actions special">
+                        <li><a href="#" class="button">View Project</a></li>
+                    </ul>
+                </article>
+                
+                <article>
+                    <header>
+                        <h2><a href="#">Human Activity Recognition</a></h2>
+                    </header>
+                    <a href="#" class="image fit"><img src="images/humanactivity.jpg" alt="Human Activity Recognition" /></a>
+                    <p>A machine learning project focusing on recognizing human activities through smartphone and smartwatch sensor data. Combined data visualization techniques with machine learning to classify physical activities.</p>
+                    <ul class="actions special">
+                        <li><a href="#" class="button">View Project</a></li>
+                    </ul>
+                </article>
+                
+                <article>
+                    <header>
+                        <h2><a href="#">Data Mining & Visualization</a></h2>
+                    </header>
+                    <a href="#" class="image fit"><img src="images/datavisuals.jpg" alt="Data Visualization" /></a>
+                    <p>Comprehensive analysis project exploring patterns and trends in real-world datasets. Incorporates multiple techniques including stock market analysis, geospatial visualization, and predictive modeling.</p>
+                    <ul class="actions special">
+                        <li><a href="#" class="button">View Project</a></li>
+                    </ul>
+                </article>
+                
+                <article>
+                    <header>
+                        <h2><a href="#">ID3 Decision Tree Algorithm</a></h2>
+                    </header>
+                    <a href="#" class="image fit"><img src="images/ID3ALGORITHM.jpg" alt="ID3 Algorithm" /></a>
+                    <p>Implementation of ID3 decision tree algorithm to predict Sunday activities using factors like weather, financial status, and parental visits. Uses entropy and information gain for prediction.</p>
+                    <ul class="actions special">
+                        <li><a href="#" class="button">View Project</a></li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- Pagination -->
+            <footer>
+                <div class="pagination">
+                    <a href="#" class="page active">1</a>
+                    <a href="page2.html" class="page">2</a>
+                    <a href="page3.html" class="page">3</a>
+                    <a href="page4.html" class="page">4</a>
+                    <a href="page5.html" class="page">5</a>
+                    <span class="extra">&hellip;</span>
+                    <a href="page2.html" class="next">Next</a>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <section class="split contact">
+                <section class="alt">
+                    <h3>Location</h3>
+                    <p>Leeds, United Kingdom</p>
+                </section>
+                <section>
+                    <h3>Phone</h3>
+                    <p><a href="tel:+447587972186">(+44) 075-8797-2186</a></p>
+                </section>
+                <section>
+                    <h3>Email</h3>
+                    <p><a href="mailto:bibiglorious34@gmail.com">bibiglorious34@gmail.com</a></p>
+                </section>
+                <section>
+                    <h3>Social</h3>
+                    <ul class="icons alt">
+                        <li><a href="https://www.linkedin.com/in/ebere-onwuamaoke/"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://github.com/Bibiglorious"><i class="fab fa-github"></i></a></li>
+                    </ul>
+                </section>
+            </section>
+        </footer>
+
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul><li>&copy; Ebere's Portfolio</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+        </div>
+
+    </div>
+
+    <!-- BG -->
+    <div id="bg"></div>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <script>
+        // Fade in animation on load
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+
+        // Scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.querySelector('.scroll-top');
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const bg = document.getElementById('bg');
+            const rate = scrolled * -0.3;
+            bg.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.posts article, .post.featured').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
