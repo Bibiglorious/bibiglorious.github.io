@@ -492,6 +492,12 @@
     </div>
 
     <script>
+        // Pagination state
+        const paginationState = {
+            'data-science': { currentPage: 1, totalPages: 3 },
+            'data-engineering': { currentPage: 1, totalPages: 2 }
+        };
+
         function showSection(sectionName) {
             const sections = document.querySelectorAll('.projects-section');
             sections.forEach(section => section.classList.remove('active'));
@@ -503,11 +509,98 @@
             event.target.classList.add('active');
         }
 
+        function changePage(section, direction) {
+            const state = paginationState[section];
+            const newPage = state.currentPage + direction;
+            
+            if (newPage >= 1 && newPage <= state.totalPages) {
+                goToPage(section, newPage);
+            }
+        }
+
+        function goToPage(section, pageNumber) {
+            const state = paginationState[section];
+            
+            if (pageNumber >= 1 && pageNumber <= state.totalPages) {
+                state.currentPage = pageNumber;
+                updatePaginationUI(section);
+                
+                // Here you would typically load different projects for the page
+                // For now, we'll just show a message
+                console.log(`Loading page ${pageNumber} for ${section}`);
+            }
+        }
+
+        function updatePaginationUI(section) {
+            const state = paginationState[section];
+            const sectionElement = document.getElementById(section);
+            const pagination = sectionElement.querySelector('.pagination');
+            
+            // Update page buttons
+            const pageButtons = pagination.querySelectorAll('.pagination-btn:not(:first-child):not(:last-child)');
+            pageButtons.forEach((btn, index) => {
+                const pageNum = index + 1;
+                if (pageNum === state.currentPage) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Update navigation buttons
+            const prevBtn = pagination.querySelector('.pagination-btn:first-child');
+            const nextBtn = pagination.querySelector('.pagination-btn:last-child');
+            
+            if (state.currentPage === 1) {
+                prevBtn.classList.add('disabled');
+            } else {
+                prevBtn.classList.remove('disabled');
+            }
+            
+            if (state.currentPage === state.totalPages) {
+                nextBtn.classList.add('disabled');
+            } else {
+                nextBtn.classList.remove('disabled');
+            }
+            
+            // Update info text
+            const infoText = pagination.querySelector('.pagination-info');
+            infoText.textContent = `Page ${state.currentPage} of ${state.totalPages}`;
+        }
+
         function viewProject(projectId) {
-            alert(`Navigating to ${projectId} details page...`);
+            // GitHub repository URLs for your actual projects
+            const projectUrls = {
+                // Data Science Projects (you can add your real GitHub URLs here later)
+                'sentiment-analysis': '#',
+                'restaurant-analysis': '#',
+                'dementia-prediction': '#',
+                'fraud-detection': '#',
+                'activity-recognition': '#',
+                'data-visualization': '#',
+                
+                // Data Engineering Projects (replace with your actual GitHub repository URLs)
+                'etl-pipeline': 'https://github.com/bibiglorious/your-etl-project',
+                'data-warehouse': 'https://github.com/bibiglorious/your-warehouse-project', 
+                'stream-processing': 'https://github.com/bibiglorious/your-streaming-project',
+                'data-lake': 'https://github.com/bibiglorious/your-data-lake-project'
+            };
+            
+            const url = projectUrls[projectId];
+            if (url && url !== '#') {
+                // Open GitHub repository in new tab
+                window.open(url, '_blank');
+            } else {
+                alert(`GitHub repository for ${projectId} will be available soon!`);
+            }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize pagination UI
+            updatePaginationUI('data-science');
+            updatePaginationUI('data-engineering');
+            
+            // Animate cards on scroll
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
